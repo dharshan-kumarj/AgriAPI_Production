@@ -6,22 +6,37 @@
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; }
-        .card { border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-        .btn-primary { background-color: #212529; border-color: #212529; }
-        .btn-primary:hover { background-color: #1a1e21; border-color: #1a1e21; }
+        body { 
+            background-color: #45a049; 
+            background-image: url('https://example.com/farm-background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .card { 
+            border: none; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .btn-primary { 
+            background-color: #4CAF50; 
+            border-color: #4CAF50; 
+        }
+        .btn-primary:hover { 
+            background-color: #45a049; 
+            border-color: #45a049; 
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="text-center mb-4">Register</h2>
+                        <h2 class="text-center mb-4">Join AgriGenesis</h2>
                         <form id="registerForm">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="name" required>
                             </div>
                             <div class="mb-3">
@@ -32,6 +47,16 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" required>
                             </div>
+                            <!-- <div class="mb-3">
+                                <label for="farm_type" class="form-label">Farm Type</label>
+                                <select class="form-select" id="farm_type" required>
+                                    <option value="">Select farm type</option>
+                                    <option value="crop">Crop Farming</option>
+                                    <option value="livestock">Livestock</option>
+                                    <option value="mixed">Mixed Farming</option>
+                                    <option value="organic">Organic Farming</option>
+                                </select>
+                            </div> -->
                             <button type="submit" class="btn btn-primary w-100">Register</button>
                         </form>
                         <p class="text-center mt-3">Already have an account? <a href="Login.html">Login</a></p>
