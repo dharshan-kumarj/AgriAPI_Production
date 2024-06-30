@@ -59,7 +59,7 @@
                             </div> -->
                             <button type="submit" class="btn btn-primary w-100">Register</button>
                         </form>
-                        <p class="text-center mt-3">Already have an account? <a href="Login.html">Login</a></p>
+                        <p class="text-center mt-3">Already have an account? <a href="Pages/Login.html">Login</a></p>
                     </div>
                 </div>
             </div>
@@ -75,15 +75,20 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
         
-            fetch('http://localhost:8000/api/register', {
+            fetch('https://farmapi.selfmade.one/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+				'Accept': 'application/json',
                 },
                 body: JSON.stringify({ name, email, password })
             })
-            .then(response => response.json())
+            .then(response => {
+    console.log('Response status:', response.status);
+    return response.json();
+})
             .then(data => {
+    console.log('Response data:', data);
                 if (data.user) {
                     alert('Registration successful! Please log in.');
                     window.location.href = 'Login.html';

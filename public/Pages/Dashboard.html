@@ -62,26 +62,31 @@
                 return;
             }
 
-            fetch('http://localhost:8000/api/dashboard', {
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    const user = JSON.parse(localStorage.getItem('user'));
-                    document.getElementById('username').textContent = user.name;
-                } else {
-                    alert('Failed to load dashboard: ' + JSON.stringify(data));
-                    window.location.href = 'Login.html';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while loading the dashboard.');
-                window.location.href = 'Login.html';
-            });
+            fetch('https://farmapi.selfmade.one/api/dashboard', {
+    headers: {
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/json'
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    return response.json();
+})
+.then(data => {
+    if (data.message) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        document.getElementById('username').textContent = user.name;
+    } else {
+        throw new Error('Failed to load dashboard: ' + JSON.stringify(data));
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('An error occurred while loading the dashboard: ' + error.message);
+    window.location.href = 'Login.html';
+});
 
             document.getElementById('logoutBtn').addEventListener('click', function(e) {
                 e.preventDefault();
